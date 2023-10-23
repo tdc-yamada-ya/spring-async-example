@@ -2,3 +2,7 @@ logging:
   level:
     root: INFO
     org.example: TRACE
+
+    # トランザクションの確認用に、一部のパッケージのログ出力を DEBUG レベルにします。
+    org.springframework.orm.jpa: DEBUG
+    org.springframework.transaction: DEBUG
