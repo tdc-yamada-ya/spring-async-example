@@ -21,9 +21,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    @Transactional
     public BatchCreateUsersTask batchCreateUsers(int count) {
-        BatchCreateUsersTask savedTask = batchCreateUsersTaskRepository.save(new BatchCreateUsersTask(null, "started"));
+        BatchCreateUsersTask savedTask = userBatchCreator.createTask();
         userBatchCreator.createUsers(savedTask, count);
         return savedTask;
     }

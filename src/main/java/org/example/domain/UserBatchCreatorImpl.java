@@ -28,6 +28,12 @@ public class UserBatchCreatorImpl implements UserBatchCreator {
         this.batchCreateUsersTaskRepository = batchCreateUsersTaskRepository;
     }
 
+    @Override
+    @Transactional
+    public BatchCreateUsersTask createTask() {
+        return batchCreateUsersTaskRepository.save(new BatchCreateUsersTask(null, "started"));
+    }
+
     @Async
     @Transactional
     @Override
