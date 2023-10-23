@@ -4,6 +4,7 @@ import org.example.domain.BatchCreateUsersTask;
 import org.example.domain.BatchCreateUsersTaskRepository;
 import org.springframework.stereotype.Repository;
 
+import java.time.Instant;
 import java.util.UUID;
 
 @Repository
@@ -11,12 +12,12 @@ public class BatchCreateUsersTaskRepositoryImpl implements BatchCreateUsersTaskR
     @Override
     public BatchCreateUsersTask save(BatchCreateUsersTask task) {
         // TODO データベースにデータを登録する処理を実装してください。
-        return new BatchCreateUsersTask(task.getId() == null ? UUID.randomUUID().toString() : task.getId(), task.getStatus());
+        return new BatchCreateUsersTask(task.getId() == null ? UUID.randomUUID().toString() : task.getId(), task.getStatus(), task.getCreatedAt(), task.getUpdatedAt());
     }
 
     @Override
     public BatchCreateUsersTask get(String id) {
         // TODO データベースからデータを取得する処理を実装してください。
-        return new BatchCreateUsersTask(id, "started");
+        return new BatchCreateUsersTask(id, "started", Instant.MIN, Instant.MIN);
     }
 }
